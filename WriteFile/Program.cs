@@ -25,32 +25,26 @@ if (File.Exists(path))
     Show(fileContents);
 textInput:
     string line = Console.ReadLine();
-    if (line == "$exit")
+    switch (line)
     {
-        WriteFile(fileContents.ToArray(), path);
-        goto pathInput;
+        case "$exit":
+            WriteFile(fileContents.ToArray(), path);
+            goto pathInput;
+        case "$del":
+            fileContents.RemoveAt(fileContents.Count - 1);
+            Show(fileContents);
+            break;
+        case "$save":
+            WriteFile(fileContents.ToArray(), path);
+            break;
+        case "$erese":
+            fileContents.Clear();
+            break;
+        default:
+            fileContents.Add(line);
+            break;
     }
-    else if (line == "$del")
-    {
-        fileContents.RemoveAt(fileContents.Count - 1);
-        Show(fileContents);
-        goto textInput;
-    }
-    else if (line == "$save")
-    {
-        WriteFile(fileContents.ToArray(), path);
-        goto textInput;
-    }
-    else if (line == "$erese")
-    {
-        fileContents.Clear();
-        goto textInput;
-    }
-    else
-    {
-        fileContents.Add(line);
-        goto textInput;
-    }
+    goto textInput;
 }
 else
 {
