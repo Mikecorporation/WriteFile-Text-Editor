@@ -8,7 +8,7 @@ Console.WriteLine("""
     Enter the file path. If if such a file does not exist, it will
     automaticly created.
 
-    to save changes on a new line type $save and press ENTER
+    to save changes, type $save pn a new line and press ENTER
     to save and exit - type $exit
     To delete last line - type $del
     To erese all text in a file - type $erese
